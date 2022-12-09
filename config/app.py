@@ -2,9 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .conf import settings
 
+# database
+from config.create_db_and_tables import create_tables
 
 # Routes
-from app.routes import router as router_jobs
+from app.users.routes import router as router_users
 
 
 def get_application():
@@ -42,7 +44,12 @@ def get_application():
         allow_headers=["*"],
     )
 
-    app.include_router(router_jobs)
+    @app.on_event("startup")
+    def startup_event():
+        create_tables()
+
+    # Routes
+    app.include_router(router_users)
 
     return app
 
