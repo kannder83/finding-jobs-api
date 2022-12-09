@@ -3,6 +3,7 @@ from config.database import Base, engine
 
 # Models
 from app.users import models
+from app.skills import models
 
 
 def create_tables():
