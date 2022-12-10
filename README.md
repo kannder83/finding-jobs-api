@@ -10,6 +10,8 @@ Esta API esta desarrollada con:
 
 - Postgres
 
+- GCP
+
 ## Programs
 
 Se requiere teneer instalado los siguientes programas:
@@ -51,6 +53,10 @@ exit
 Para ingresar a la aplicación dar clic en el link.
 
 [localhost:8000](http://localhost:8000/)
+
+La API en produccion se encuentra en la URL:
+
+[https://kannder83.com/api/finding-jobs/](https://kannder83.com/api/finding-jobs/#/Suggestions)
 
 ## Creación y consulta de User
 
