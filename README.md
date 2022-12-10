@@ -178,6 +178,61 @@ Se tiene un JSON de respuesta como el siguiente:
 
 ![Alt text](./documentation/img/image_08.png "image 08")
 
+## Buscando las sugerencias:
+
+1. Con el UserID ir al endpoint:
+
+UserId: 5f318a0d-4d33-4f28-b725-c4566610aaa4
+
+![Alt text](./documentation/img/image_09.png "image 09")
+
+2. Realizar la busqueda por el UserID:
+
+![Alt text](./documentation/img/image_10.png "image 10")
+
+3. En caso de existir una oferta donde los skill del usuario sean igual o mayor del 50% de match, se mostrara el VancancyID y el Affinity con la vacante:
+
+```py
+[
+  {
+    "VacancyID": "657b471c-253d-4af6-8d43-1f3061c34f2d",
+    "Affinity": 100
+  },
+  {
+    "VacancyID": "11bc5878-fc6b-487f-bfd3-0c0064d13454",
+    "Affinity": 100
+  }
+]
+```
+
+4. Con el VacancyID se puede ir a buscar la oferta indicada y confirmar la afinidad:
+
+```json
+{
+  "PositionName": "Developer",
+  "CompanyName": "Stark Industies",
+  "Salary": 2000,
+  "Currency": "USD",
+  "VacancyLink": "www.linkjobs.com",
+  "VacancyId": "657b471c-253d-4af6-8d43-1f3061c34f2d",
+  "RequiredSkills": [
+    {
+      "SkillName": "python",
+      "YearsOfExperience": 1,
+      "SkillId": 1
+    }
+  ]
+}
+```
+
+5. En caso de no haber ofertas para ese usuario, se mostrara un Not Found.
+
+```json
+{
+  "detail": "UserID: 37e56553-4d30-4593-952c-215ab37d3d93 Not Found Skills"
+}
+```
+
 ## Borrar la información
 
 ```bash
