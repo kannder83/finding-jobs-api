@@ -25,7 +25,7 @@ def get_all_skills(
     """
     Returns all skills created.
     """
-    all_skills = db.query(models.Skill).offset(skip).limit(limit).all()
+    all_skills = db.query(models.UserSkill).offset(skip).limit(limit).all()
 
     return all_skills
 
@@ -43,8 +43,8 @@ def get_user_skills(
     """
     Returns user skill.
     """
-    user_skills = db.query(models.Skill).filter(
-        models.Skill.IdUserSkill == user_id).all()
+    user_skills = db.query(models.UserSkill).filter(
+        models.UserSkill.IdUserSkill == user_id).all()
 
     return user_skills
 
@@ -61,10 +61,52 @@ def create_skill_for_user(
     db: Session = Depends(get_db)
 ):
     """
-    Creates additional information for the user.
+    Create skills for a specific user.
     """
-    add_skill = models.Skill(
+    add_skill = models.UserSkill(
         **skill.dict(), IdUserSkill=user_id)
+    db.add(add_skill)
+    db.commit()
+    db.refresh(add_skill)
+
+    return add_skill
+
+
+@router.get(
+    path="/vacancies/{user_id}/skills/",
+    status_code=status.HTTP_200_OK,
+    summary="Show an specific skills from vacancy",
+    response_model=list[schemas.SkillOut],
+)
+def get_vacancy_skills(
+        vacancy_id: str,
+        db: Session = Depends(get_db)
+):
+    """
+    Returns vacancy skill.
+    """
+    vacancy_skills = db.query(models.RequiredSkill).filter(
+        models.RequiredSkill.IdVancancySkill == vacancy_id).all()
+
+    return vacancy_skills
+
+
+@router.post(
+    path="/vacancies/{user_id}/skills/",
+    status_code=status.HTTP_201_CREATED,
+    response_model=schemas.SkillOut,
+    summary="Create skills for a specific vacancy",
+)
+def create_skill_for_vacancy(
+    vacancy_id: str,
+    skill: schemas.CreateSkill,
+    db: Session = Depends(get_db)
+):
+    """
+    Create skills for a specific vacancy.
+    """
+    add_skill = models.RequiredSkill(
+        **skill.dict(), IdVancancySkill=vacancy_id)
     db.add(add_skill)
     db.commit()
     db.refresh(add_skill)

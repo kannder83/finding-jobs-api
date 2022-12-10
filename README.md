@@ -18,7 +18,13 @@ cp env.template .env
 
 ```bash
 docker-compose -f Developer.yml build
+
+docker-compose -f Developer.yml up
 ```
+
+## Acceder a la API
+
+[localhost:8000](http://localhost:8000/)
 
 ## ==============================================
 

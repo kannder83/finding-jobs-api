@@ -8,6 +8,7 @@ from config.create_db_and_tables import create_tables
 # Routes
 from app.users.routes import router as router_users
 from app.skills.routes import router as router_skills
+from app.vacancies.routes import router as router_vacancies
 
 
 def get_application():
@@ -52,6 +53,7 @@ def get_application():
     # Routes
     app.include_router(router_users)
     app.include_router(router_skills)
+    app.include_router(router_vacancies)
 
     return app
 

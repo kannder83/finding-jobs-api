@@ -16,25 +16,4 @@ class User(Base):
 
     # Relations
     Skills = relationship(
-        "Skill", back_populates="YearsOfSkill")
-
-
-"""
-Example:
-{
- "UserId": uuidv4(),
- "FirstName": "Test Name",
- "LastName": "Test Last Name",
- "Email": "un.test.no.hace.mal@gmail.com",
- "YearsPreviousExperience": 5,
- "Skills": [
-   {
-     "Python": 1
-   },
-   {
-     "NoSQL": 2
-   }
- ]
-}
-
-"""
+        "UserSkill", back_populates="YearsOfSkill")
