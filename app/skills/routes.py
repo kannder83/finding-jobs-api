@@ -167,7 +167,7 @@ def get_vacancy_skills(
 
 
 @router.post(
-    path="/vacancies/{user_id}/skills/",
+    path="/vacancies/{vacancy_id}/skills/",
     status_code=status.HTTP_201_CREATED,
     response_model=schemas.SkillOut,
     summary="Create skills for a specific vacancy",
