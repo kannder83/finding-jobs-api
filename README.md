@@ -84,7 +84,7 @@ UserID: 5f318a0d-4d33-4f28-b725-c4566610aaa4
 }
 ```
 
-Para confirma que la experiencia fue agregada al usuario utilizar el endpoint de consulta por UserId:
+3. Para confirma que la experiencia fue agregada al usuario utilizar el endpoint de consulta por UserId:
 
 ![Alt text](./documentation/img/image_03.png "image 03")
 
@@ -112,9 +112,71 @@ Se tiene un JSON de respuesta como el siguiente:
 }
 ```
 
-Se puede obtener información de todos los usuarios consultando el endpoint:
+4. Se puede obtener información de todos los usuarios consultando el endpoint:
 
 ![Alt text](./documentation/img/image_04.png "image 04")
+
+## Creación y consulta de Vancancy
+
+1. Se debe crear una vacante desde el endpoint:
+
+![Alt text](./documentation/img/image_05.png "image 05")
+
+El JSON para crearlo es:
+
+```json
+{
+  "PositionName": "Diseñador",
+  "CompanyName": "Universal",
+  "Salary": 1000,
+  "Currency": "USD",
+  "VacancyLink": "www.linkjobs.com/oferta"
+}
+```
+
+2. Para agregar los skill a la vacante se utiliza el endpoint:
+
+![Alt text](./documentation/img/image_06.png "image 06")
+
+Se requiere conocer el VacancyId, luego usando el JSON se agega el skill:
+
+VacancyId: 11bc5878-fc6b-487f-bfd3-0c0064d13454
+
+```json
+{
+  "SkillName": "react",
+  "YearsOfExperience": 1,
+  "SkillId": 2
+}
+```
+
+3. Para confirma que la experiencia fue agregada a la vacante utilizar el endpoint de consulta por VacancyId:
+
+![Alt text](./documentation/img/image_07.png "image 07")
+
+Se tiene un JSON de respuesta como el siguiente:
+
+```json
+{
+  "PositionName": "Diseñador",
+  "CompanyName": "Universal",
+  "Salary": 1000,
+  "Currency": "USD",
+  "VacancyLink": "www.linkjobs.com/oferta",
+  "VacancyId": "11bc5878-fc6b-487f-bfd3-0c0064d13454",
+  "RequiredSkills": [
+    {
+      "SkillName": "react",
+      "YearsOfExperience": 1,
+      "SkillId": 2
+    }
+  ]
+}
+```
+
+4. Se puede obtener información de todas las vacantes consultando el endpoint:
+
+![Alt text](./documentation/img/image_08.png "image 08")
 
 ## Borrar la información
 
