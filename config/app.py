@@ -9,6 +9,7 @@ from config.create_db_and_tables import create_tables
 from app.users.routes import router as router_users
 from app.skills.routes import router as router_skills
 from app.vacancies.routes import router as router_vacancies
+from app.suggestions.routes import router as router_suggestions
 
 
 def get_application():
@@ -54,6 +55,7 @@ def get_application():
     app.include_router(router_users)
     app.include_router(router_vacancies)
     app.include_router(router_skills)
+    app.include_router(router_suggestions)
 
     return app
 
