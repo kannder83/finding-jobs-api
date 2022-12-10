@@ -1,6 +1,6 @@
 # finding jobs API
 
-Finding Work API - Technical Proof
+Finding Jobs API - Technical Proof
 
 Esta API esta desarrollada con:
 
