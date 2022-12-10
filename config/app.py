@@ -52,8 +52,8 @@ def get_application():
 
     # Routes
     app.include_router(router_users)
-    app.include_router(router_skills)
     app.include_router(router_vacancies)
+    app.include_router(router_skills)
 
     return app
 
