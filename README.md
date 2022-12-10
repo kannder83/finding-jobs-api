@@ -17,32 +17,28 @@ cp env.template .env
 ## Build Docker
 
 ```bash
+# Crea el contenedor:
 docker-compose -f Developer.yml build
 
-docker-compose -f Developer.yml up
+# Inicializa el contenedor:
+docker-compose -f Developer.yml up -d
+
+# Ingresar al contenedor:
+docker exec -it dev_api_finding_jobs bash
+
+# Ejecutar achivo para crear las tablas en la base de datos y copiar los datos a la BD:
+python3 create_tables.py
+
+exit
 ```
 
 ## Acceder a la API
 
 [localhost:8000](http://localhost:8000/)
 
-## ==============================================
+## Borrar la información
 
-## Proceso:
-
-1. Crear el CRUD para usuarios
-2. Para los skill se realiza una consulta a otra tabla donde esta el id con los nuevos valores, una relación.
-
-## Additional info:
-
-```py
-# Function for creating database and tables
-def create_db_and_tables():
-    SQLModel.metadata.create_all(engine)
-
-app = FastAPI()
-
-@app.on_event("startup")
-def on_startup():
-    create_db_and_tables()
+```bash
+# Borra toda la configuración:
+docker-compose -f Developer.yml down --remove-orphans -v
 ```

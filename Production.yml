@@ -1,0 +1,28 @@
+version: "3.5"
+services:
+  api:
+    container_name: prod_api_finding_jobs
+    restart: always
+    build:
+      context: .
+      dockerfile: ./compose/dev/Dockerfile
+    ports:
+      - ${PROD_PORT}:8000
+    volumes:
+      - ./:/usr/src/app
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: prod_db_finding_jobs
+    image: postgres:14-alpine
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - prod_jobs_postgres_db:/var/lib/postgresql/data
+
+volumes:
+  prod_jobs_postgres_db:
