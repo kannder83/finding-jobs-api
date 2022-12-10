@@ -1,4 +1,4 @@
-from fastapi import Response, status, HTTPException, Depends, APIRouter, Path
+from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from config.database import get_db
 
@@ -35,7 +35,7 @@ def get_all_vacancies(
 
     if (all_vacaciones is None) or (len(all_vacaciones) == 0):
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail=f"Not Found")
+            status_code=status.HTTP_404_NOT_FOUND, detail=f"Not Found Vacancies")
 
     return all_vacaciones
 

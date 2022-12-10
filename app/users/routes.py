@@ -1,4 +1,4 @@
-from fastapi import Response, status, HTTPException, Depends, APIRouter, Path
+from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from config.database import get_db
 
@@ -33,7 +33,7 @@ def get_all_users(
 
     if (all_users is None) or (len(all_users) == 0):
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail=f"Not Found")
+            status_code=status.HTTP_404_NOT_FOUND, detail=f"Not Found Users")
 
     return all_users
 

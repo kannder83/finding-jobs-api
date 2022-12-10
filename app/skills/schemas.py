@@ -1,7 +1,6 @@
 import uuid as uuid_pkg
 
-from pydantic import BaseModel, EmailStr, Field
-from datetime import datetime, date
+from pydantic import BaseModel, Field
 
 
 class CreateSkill(BaseModel):

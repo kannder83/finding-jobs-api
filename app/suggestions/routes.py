@@ -6,7 +6,7 @@ from config.database import get_db
 # Models and Schemas
 from app.skills.models import UserSkill, RequiredSkill
 from app.users.models import User
-from app.suggestions import schemas
+from app.suggestions.schemas import Suggestion
 
 router = APIRouter(
     tags=["Suggestions"]
@@ -17,7 +17,7 @@ router = APIRouter(
     path="/suggestions/{user_id}",
     status_code=status.HTTP_200_OK,
     summary="Show all the subbestions by user",
-    response_model=list[schemas.Suggestion],
+    response_model=list[Suggestion],
 )
 def get_all_users(
         user_id: str,

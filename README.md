@@ -11,10 +11,11 @@ Finding Work API - Technical Proof
 ## Enviroment File
 
 ```bash
+# Utilizar el comando para copiar el template al archivo .env
 cp env.template .env
 ```
 
-## Build Docker
+## Build Docker
 
 ```bash
 # Crea el contenedor:

@@ -1,4 +1,4 @@
-from fastapi import Response, status, HTTPException, Depends, APIRouter, Path
+from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from config.database import get_db
 
@@ -36,7 +36,7 @@ def get_all_skills(
 
     if (all_skills is None) or (len(all_skills) == 0):
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail=f"Not Found")
+            status_code=status.HTTP_404_NOT_FOUND, detail=f"Not Found Skills")
 
     return all_skills
 
@@ -116,7 +116,7 @@ def create_skill_for_user(
     summary="Show all skills",
     response_model=list[schemas.SkillOutVacancyId],
 )
-def get_all_skills(
+def get_all_required_skills(
         skip: int = 0,
         limit: int = 10,
         db: Session = Depends(get_db)
@@ -133,7 +133,7 @@ def get_all_skills(
 
     if (all_skills is None) or (len(all_skills) == 0):
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail=f"Not Found")
+            status_code=status.HTTP_404_NOT_FOUND, detail=f"Not Found Required Skills")
 
     return all_skills
 

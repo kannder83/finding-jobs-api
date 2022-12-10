@@ -9,10 +9,6 @@ from app.skills.schemas import SkillOut
 
 
 class CreateVacancy(BaseModel):
-    # FirstName: str = Field(..., example="Juan", max_length=50)
-    # LastName: str = Field(..., example="Perez", max_length=50)
-    # Email: EmailStr = Field(..., example="example@xyz.com")
-    # YearsPreviousExperience: int = Field(..., example=2)
     PositionName: str = Field(..., example="Developer", max_length=50)
     CompanyName: str = Field(..., example="Stark Industies", max_length=50)
     Salary: int = Field(..., example=2000)
